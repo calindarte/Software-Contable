@@ -3,6 +3,7 @@ import LayoutRoot from "../layout/LayoutRoot";
 import Home from "../pages/Home";
 import InteresSimple from "../pages/InteresSimple";
 import  InteresCompuesto  from "../pages/InteresCompuesto";
+import Anualidad from "../pages/Anualidad";
 
 export const router = createBrowserRouter([
     {
@@ -20,6 +21,10 @@ export const router = createBrowserRouter([
             {
                 path:'/interes-compuesto',
                 element: <InteresCompuesto/>,
+            },
+            {
+                path:'/anualidad',
+                element: <Anualidad/>,
             }
         ]
     }

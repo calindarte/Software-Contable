@@ -23,7 +23,7 @@ const InteresCompuesto = () => {
         }
         // Verificar si solo se ingresa el campo de meses
         if (meses && !anios && !dias) {
-            p = parseFloat(meses) / 12; // Convertir meses a años
+            p = parseFloat(meses) ; // Convertir meses a años
         }
 
         // Verificar si solo se ingresa el campo de días
@@ -39,13 +39,12 @@ const InteresCompuesto = () => {
 
                 const ResultInteres = interes / 100;
 
-                const result = valorPresente * Math.pow(1 + ResultInteres, p);
+                const result = valorPresente * Math.pow((1 + ResultInteres), p);
                 setValorFuturo(result);
                 console.log("valorFuturo", valorFuturo);
             }
         }
         if (valorFuturo && interes && p) {
-
             const ResultInteres = interes / 100;
 
             const result = valorFuturo / Math.pow(1 + ResultInteres, p);
@@ -62,10 +61,11 @@ const InteresCompuesto = () => {
         if (valorFuturo && valorPresente && interes) {
 
             const ResultInteres = interes / 100;
-            const ResulTiempo = Math.log(valorFuturo/valorPresente) / Math.log(1+ResultInteres);
-            console.log("timepo", ResulTiempo)
+            const ResulTiempo = (Math.log(valorFuturo) - Math.log(valorPresente)) / Math.log(1+ResultInteres);
+            setAnios(ResulTiempo);
         }
         
+
 
     }
 
