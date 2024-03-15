@@ -102,32 +102,63 @@ const InteresSimple = () => {
         <h2 className="text-center font-medium text-2xl">
           Calculadora de Interés Simple
         </h2>
-        <p className="mt-4">
-          Calculadora de <b>interés simple</b> diseñada para ayudar a los usuarios a
-          determinar el interés, el capital, la tasa de interés, el tiempo, y el
-          monto total. El objetivo principal es ofrecer una herramienta fácil de
-          usar para calcular rápidamente estos valores financieros básicos sin
-          la necesidad de realizar cálculos manuales complicados. Los usuarios
-          pueden ingresar el capital inicial que desean invertir, la tasa de
-          interés anual aplicable y el período de tiempo durante el cual desean
-          calcular el interés. El software acepta el tiempo en años, meses y
-          días para una mayor flexibilidad en los cálculos. Una vez que se
-          ingresan estos datos, el software realiza automáticamente los cálculos
-          necesarios para determinar el interés simple y el monto total al final
-          del período especificado.
+        <p className="mt-4 text-justify" >
+          Calculadora de <b>interés simple</b> diseñada para ayudar a los
+          usuarios a determinar el interés, el capital, la tasa de interés, el
+          tiempo, y el monto total. El objetivo principal es ofrecer una
+          herramienta fácil de usar para calcular rápidamente estos valores
+          financieros básicos sin la necesidad de realizar cálculos manuales
+          complicados. Los usuarios pueden ingresar el capital inicial que
+          desean invertir, la tasa de interés anual aplicable y el período de
+          tiempo durante el cual desean calcular el interés. El software acepta
+          el tiempo en años, meses y días para una mayor flexibilidad en los
+          cálculos. Una vez que se ingresan estos datos, el software realiza
+          automáticamente los cálculos necesarios para determinar el interés
+          simple y el monto total al final del período especificado.
         </p>
+        <div className="py-4 flex flex-col gap-3">
+      
+            <span>
+              <b>VP (Valor Presente o Capital):</b> Es la cantidad de dinero inicial o
+              principal que se invierte o presta.
+            </span>
+            <span><b>i (Tasa de Interés):</b> Representa la tasa de interés por período, generalmente expresada como un porcentaje.</span>
+          <span> <b>t (Tiempo):</b> Es la duración del préstamo o la inversión, expresada en años, meses y/o días.</span>
+          <span><b>Interés Simple:</b> Es el interés calculado sobre el capital original únicamente, sin tener en cuenta los intereses acumulados en períodos anteriores.</span>
+          <span><b>Monto Total:</b> Es la suma del capital inicial y el interés simple acumulado durante el período de tiempo especificado.</span>
+
+     
+        </div>
         <div className="flex flex-col items-center my-4">
-        <span className="tracking-wider mb-2 font-medium">Formulas:</span>
-        <div className=" flex flex-col">
-        <span> <b>Interes Simple: I</b>  = (C) (i) (t)</span>
-        <span><b>Monto: M </b> = C ( 1 + (i) (t) )</span>
-        <span><b>Capital: C</b>  = I / (i) (t)</span>
-        <span><b>Tasa de Interes: i</b>  = I / (C) (t)</span>
-        <span><b>Tiempo: t</b>  = I / (C) (i)</span>
+          <span className="tracking-wider mb-2 font-medium">Formulas:</span>
+          <div className="flex justify-center">
+  <table>
+    <tbody >
+      <tr >
+        <td className="border border-zinc-700 p-3" ><b>Interes Simple:</b></td>
+        <td className="border border-zinc-700 p-3"><span>I = (C) (i) (t)</span></td>
+      </tr>
+      <tr>
+        <td className="border border-zinc-700 p-3"><b>Monto: </b></td>
+        <td className="border border-zinc-700 p-3"><span>M = C ( 1 + (i) (t) )</span></td>
+      </tr>
+      <tr >
+        <td className="border border-zinc-700 p-3"><b>Capital: </b></td>
+        <td className="border border-zinc-700 p-3"><span>C = I / (i) (t)</span></td>
+      </tr>
+      <tr >
+        <td className="border border-zinc-700 p-3"><b>Tasa de Interes: </b></td>
+        <td className="border border-zinc-700 p-3"><span>i = I / (C) (t)</span></td>
+      </tr>
+      <tr >
+        <td className="border border-zinc-700 p-3"><b>Tiempo: </b></td>
+        <td className="border border-zinc-700 p-3"><span>t = I / (C) (i)</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</div>
 
-        </div>
-
-        </div>
 
         <div className="py-8 flex flex-col gap-3">
           <div className="bg-slate-200 p-4 flex gap-4 rounded-md shadow-md">
@@ -146,7 +177,6 @@ const InteresSimple = () => {
               value={tasaInteres}
               onChange={(e) => setTasaInteres(e.target.value)}
               className="focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-300 rounded-md w-[20%] px-2"
-
             />
           </div>
           <div className="bg-slate-200 p-4 flex gap-4 rounded-md shadow-md">
@@ -157,7 +187,6 @@ const InteresSimple = () => {
               onChange={(e) => setTiempoAnios(e.target.value)}
               placeholder="Años"
               className="focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-300 rounded-md w-[20%] px-2"
-
             />
             <input
               type="number"
@@ -165,7 +194,6 @@ const InteresSimple = () => {
               onChange={(e) => setTiempoMeses(e.target.value)}
               placeholder="Meses"
               className="focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-300 rounded-md w-[20%] px-2"
-
             />
             <input
               type="number"
@@ -173,7 +201,6 @@ const InteresSimple = () => {
               onChange={(e) => setTiempoDias(e.target.value)}
               placeholder="Días"
               className="focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-300 rounded-md w-[20%] px-2"
-
             />
           </div>
           <div className="bg-slate-200 p-4 flex gap-4 rounded-md shadow-md">
@@ -183,7 +210,6 @@ const InteresSimple = () => {
               value={interesInput}
               onChange={(e) => setInteresInput(e.target.value)}
               className="focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-300 rounded-md w-[20%] px-2"
-
             />
           </div>
           <div className="bg-slate-200 p-4 flex gap-4 rounded-md shadow-md">
@@ -193,7 +219,6 @@ const InteresSimple = () => {
               value={montoFinal}
               onChange={(e) => setMontoFinal(e.target.value)}
               className="focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-300 rounded-md w-[20%] px-2"
-
             />
           </div>
         </div>
