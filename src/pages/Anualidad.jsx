@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import FORMULAS from '../images/FORMULAS.png';
 
-const InteresCompuesto = () => {
+const Anualidad = () => {
   const [valorPresente, setValorPresente] = useState("");
   const [valorFuturo, setValorFuturo] = useState("");
   const [interes, setInteres] = useState("");
@@ -11,65 +11,47 @@ const InteresCompuesto = () => {
   const [frecuenciaPago, setFrecuenciaPago] = useState(12);
   const [resultVf, setResultVf] = useState(null);
   const [error, setError] = useState(null);
+  let p = 0;
 
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    switch (name) {
-      case "valorPresente":
-        setValorPresente(value);
-        break;
-      case "valorFuturo":
-        setValorFuturo(value);
-        break;
-      case "interes":
-        setInteres(value);
-        break;
-      case "anios":
-        setAnios(value);
-        break;
-      case "meses":
-        setMeses(value);
-        break;
-      case "dias":
-        setDias(value);
-        break;
-      case "frecuenciaPago":
-        setFrecuenciaPago(parseInt(value));
-        break;
-      default:
-        break;
-    }
-  };
+  const CalcularTiempo = () => {
+      p =
+          parseFloat(anios) +
+          parseFloat(meses) / 12 +
+          parseFloat(dias) / 365;
 
-  const onSubmit = (e) => {
-    e.preventDefault();
-    try {
-      if ((valorPresente || valorFuturo) && interes && (anios || meses || dias)) {
-        const p = parseFloat(anios) + parseFloat(meses) / 12 + parseFloat(dias) / 365;
-
-        if (valorPresente && interes && p) {
-          const VF = calcularVF(parseFloat(valorPresente), parseFloat(interes), p, frecuenciaPago);
-          setResultVf(VF);
-          console.log("valorFuturo", VF);
-        }
-
-        setError(null);
-      } else {
-        setError("Por favor, complete todos los campos.");
+      //verificar si solo se ingresa el campo de años
+      if (anios && !meses && !dias) {
+          p = parseFloat(anios);
       }
-    } catch (error) {
-      setError("Se produjo un error");
+      // Verificar si solo se ingresa el campo de meses
+      if (meses && !anios && !dias) {
+          p = parseFloat(meses); // Convertir meses a años
+      }
+
+      // Verificar si solo se ingresa el campo de días
+      if (dias && !anios && !meses) {
+          p = parseFloat(dias) / 365; // Convertir días a años
+      }
+  }
+
+  const calcular = () => {
+    CalcularTiempo();
+    if ((valorPresente || valorFuturo) && interes && (anios || meses || dias)) {
+  
+      if (valorPresente && interes && p) {
+        // Calcula el valor futuro (VF)
+        const VF = valorPresente * Math.pow(1 + interes / (100 * frecuenciaPago), p * frecuenciaPago);
+        setResultVf(VF);
+        console.log("valorFuturo", VF);
+      } else if (valorFuturo && interes && p) {
+        // Calcula el valor presente (VP)
+        const VP = valorFuturo / Math.pow(1 + interes / (100 * frecuenciaPago), p * frecuenciaPago);
+        console.log("valorPresente", VP);
+        setResultVf(VP);
+      }
+    } else {
+      setError("Por favor, completa todos los campos necesarios.");
     }
-  };
-
-  const calcularVF = (capital, interes, tiempo, frecuenciaPago) => {
-    // Implementación básica para calcular el valor futuro
-    return capital * Math.pow(1 + interes / (100 * frecuenciaPago), tiempo * frecuenciaPago);
-  };
-
-  const truncateDecimal = (value) => {
-    if (value === null) return "";
-    return value.toFixed(2);
   };
 
   return (
@@ -94,7 +76,7 @@ const InteresCompuesto = () => {
       </div>
 
       <br />
-      <form onSubmit={onSubmit}>
+   
         <div style={styleContainerBotones}>
           <div style={StyleContainerGris}>
             <label>Capital Presente</label>
@@ -102,7 +84,7 @@ const InteresCompuesto = () => {
               type="number"
               name="valorPresente"
               value={valorPresente}
-              onChange={handleInputChange}
+              onChange={(e) => setValorPresente(e.target.value)}
               className="focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-300 rounded-md w-[20%] px-2"
             />
           </div>
@@ -113,7 +95,7 @@ const InteresCompuesto = () => {
               type="number"
               name="valorFuturo"
               value={valorFuturo}
-              onChange={handleInputChange}
+              onChange={(e) => setValorFuturo(e.target.value)}
               className="focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-300 rounded-md w-[20%] px-2"
             />
           </div>
@@ -124,7 +106,7 @@ const InteresCompuesto = () => {
               type="number"
               name="interes"
               value={interes}
-              onChange={handleInputChange}
+              onChange={(e) => setInteres(e.target.value)}
               className="focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-300 rounded-md w-[20%] px-2"
             />
           </div>
@@ -135,7 +117,7 @@ const InteresCompuesto = () => {
               type="number"
               name="anios"
               value={anios}
-              onChange={handleInputChange}
+              onChange={(e) => setAnios(e.target.value)}
               placeholder="Años"
               className="focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-300 rounded-md w-[20%] px-2"
             />
@@ -143,7 +125,7 @@ const InteresCompuesto = () => {
               type="number"
               name="meses"
               value={meses}
-              onChange={handleInputChange}
+              onChange={(e) => setMeses(e.target.value)}
               placeholder="Meses"
               className="focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-300 rounded-md w-[20%] px-2"
             />
@@ -151,14 +133,14 @@ const InteresCompuesto = () => {
               type="number"
               name="dias"
               value={dias}
-              onChange={handleInputChange}
+              onChange={(e) => setDias(e.target.value)}
               placeholder="Días"
               className="focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-300 rounded-md w-[20%] px-2"
             />
           </div>
           <br />
           <div className="flex justify-center gap-8">
-            <button style={StyleBtnCalcular} type="submit">
+            <button style={StyleBtnCalcular} type="submit" onClick={() => calcular()}>
               Calcular
             </button>
             <button style={StyleBtnLimpiar} type="button" onClick={() => {
@@ -173,7 +155,6 @@ const InteresCompuesto = () => {
             </button>
           </div>
         </div>
-      </form>
 
       {error && <p style={{ color: 'red' }}>{error}</p>}
       {resultVf && <p>Valor Futuro: {resultVf}</p>}
@@ -244,4 +225,4 @@ const StyleContainerGris = {
   boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
 };
 
-export default InteresCompuesto;
+export default Anualidad;
