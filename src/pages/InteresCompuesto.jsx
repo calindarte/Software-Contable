@@ -8,7 +8,6 @@ const InteresCompuesto = () => {
   const [tiempoDias, setTiempoDias] = useState("");
   const [frecuenciaCapitalizacion, setFrecuenciaCapitalizacion] = useState("anual");
   const [montoFinal, setMontoFinal] = useState("");
-  const [interesInput, setInteresInput] = useState("");
 
   const calcularInteres = () => {
     let VP = parseFloat(capital);
@@ -44,16 +43,25 @@ const InteresCompuesto = () => {
 
     // Calcular el monto total utilizando la fórmula de interés compuesto
     if (!isNaN(VP) && !isNaN(i) && !isNaN(t) && isNaN(VF)) {
-        
-        const montoTotal = VP * Math.pow((1 + i / n), t * n);
+       
+        const montoTotal = VP * Math.pow(1 + (i / n), t * n);
     
         setMontoFinal(montoTotal.toFixed(2));
+      
     }
+     // Calcular el valor Presente utilizando la fórmula de interés compuesto
+     if (isNaN(VP) && !isNaN(i) && !isNaN(t) && !isNaN(VF)) {
+       
+      const valorPresente = VF / Math.pow(1 + (i / n), t * n);
+  
+      setCapital(valorPresente.toFixed(2));
+    
+  }
 
     // Calcular la tasa de interés compuesto
     if (!isNaN(VP) && !isNaN(VF) && !isNaN(t) && isNaN(i)) {
-      let i = Math.pow(VF / VP, 1 / (t * n)) - 1;
-      setTasaInteres((i * 100).toFixed(2));
+      let interes = Math.pow(VF / VP, 1 / (t*n)) - 1;
+      setTasaInteres((interes * 100).toFixed(2));
     }
 
     // Calcular el tiempo
@@ -75,7 +83,6 @@ const InteresCompuesto = () => {
     setTiempoMeses("");
     setTiempoDias("");
     setFrecuenciaCapitalizacion("anual");
-    setInteresInput("");
     setMontoFinal("");
   };
 
@@ -114,16 +121,20 @@ const InteresCompuesto = () => {
 <tbody >
 <tr >
   <td className="border border-zinc-700 p-3" ><b>Interes Compuesto:</b></td>
-  <td className="border border-zinc-700 p-3"><span>M = (VP) * (1 + (i/n)^(n)*(t))</span></td>
+  <td className="border border-zinc-700 p-3"><span>VP = VF / ( 1 + i) ^ n </span></td>
 </tr>
 
 <tr >
   <td className="border border-zinc-700 p-3"><b>Tasa de Interes: </b></td>
-  <td className="border border-zinc-700 p-3"><span>i = (n √(M / VP) - 1 )</span></td>
+  <td className="border border-zinc-700 p-3"><span>i = (n √(VF / VP) - 1 )</span></td>
 </tr>
 <tr >
   <td className="border border-zinc-700 p-3"><b>Numero de Periodos: </b></td>
-  <td className="border border-zinc-700 p-3"><span>n = (Log (M/VP)) / (Log (1+i)) </span></td>
+  <td className="border border-zinc-700 p-3"><span>n = (Log (VF/VP)) / (Log (1+i)) </span></td>
+</tr>
+<tr >
+  <td className="border border-zinc-700 p-3"><b>Valor Futuro: </b></td>
+  <td className="border border-zinc-700 p-3"><span>VF = ( VP ) * ( 1 + i ) ^ n </span></td>
 </tr>
 </tbody>
 </table>

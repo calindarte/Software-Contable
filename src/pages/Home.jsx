@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
-    <div className="flex flex-col items-center rounded-2xl py-20 gap-16 m-20 shadow-xl bg-[#f5f5f5] ">
+    <div className=" flex flex-col items-center rounded-2xl py-20 gap-16 m-20 shadow-xl bg-[#f5f5f5]  ">
       <div className="text-center flex flex-col gap-y-8 ">
         <h1 className="text-3xl font-medium">
           Software De Matemáticas Financieras
