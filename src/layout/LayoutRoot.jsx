@@ -10,7 +10,7 @@ const LayoutRoot = () => {
       <div className="text-center text-sm font-thin ">
       
         <span>
-          © Derechos de autor 2024. Hecho por <b>Carlos, Eulices y Kevin</b>
+          © Derechos de autor 2024. Hecho por <b>Carlos Dev</b>
         </span>
       </div>
       </footer>
