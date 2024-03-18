@@ -11,10 +11,6 @@ const NavBar = () => {
     <NavLink path="/interes-simple" text="Interes Simple"/>
     <NavLink path="/interes-compuesto" text="Interes Compuesto"/>
     <NavLink path="/anualidad" text="Anualidad"/>
-
-
-
-
     </nav>
     </div>
     </>
@@ -23,5 +19,7 @@ const NavBar = () => {
   
   )
 }
+
+
 
 export default NavBar
