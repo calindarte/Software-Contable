@@ -52,14 +52,14 @@ const Tazadeinteres = () => {
         }
 
         if (tasaInteres !== null && tiempoTotal !== null) {
-            const r = tasaInteres / 100; 
+            const r = tasaInteres / 100;
             const n = tiempoTotal;
-            const TIEA = (Math.pow((1 + r / n), n) - 1) * 100; 
+            const TIEA = (Math.pow((1 + r / n), n) - 1) * 100;
             setMontoFinal(TIEA);
         }
 
-        if(gananciaTotal !== null && inversionInicial !== null){
-            const TRT  = (gananciaTotal / inversionInicial) * 100;
+        if (gananciaTotal !== null && inversionInicial !== null) {
+            const TRT = (gananciaTotal / inversionInicial) * 100;
             setMontoFinal(TRT);
         }
     };
@@ -84,60 +84,50 @@ const Tazadeinteres = () => {
                 <h2 className="text-center font-medium text-2xl">
                     Calculadora de Taza de interés de retorno
                 </h2>
-                <p className="mt-4 text-justify" >
-                    Calculadora de <b>Taza de interés de retorno</b> diseñada para ayudar a los
-                    usuarios a determinar el interés, el capital, la tasa de interés, el
-                    tiempo, y el monto total. El objetivo principal es ofrecer una
-                    herramienta fácil de usar para calcular rápidamente estos valores
-                    financieros básicos sin la necesidad de realizar cálculos manuales
-                    complicados. Los usuarios pueden ingresar el capital inicial que
-                    desean invertir, la tasa de interés anual aplicable y el período de
-                    tiempo durante el cual desean calcular el interés. El software acepta
-                    el tiempo en años, meses y días para una mayor flexibilidad en los
-                    cálculos. Una vez que se ingresan estos datos, el software realiza
-                    automáticamente los cálculos necesarios para determinar el interés
-                    simple y el monto total al final del período especificado.
-                </p>
                 <div className="py-4 flex flex-col gap-3">
-
-                    <span>
-                        <b>VP (Valor Presente o Capital):</b> Es la cantidad de dinero inicial o
-                        principal que se invierte o presta.
-                    </span>
-                    <span><b>i (Tasa de Interés):</b> Representa la tasa de interés por período, generalmente expresada como un porcentaje.</span>
-                    <span> <b>t (Tiempo):</b> Es la duración del préstamo o la inversión, expresada en años, meses y/o días.</span>
-                    <span><b>Interés Simple:</b> Es el interés calculado sobre el capital original únicamente, sin tener en cuenta los intereses acumulados en períodos anteriores.</span>
-                    <span><b>Monto Total:</b> Es la suma del capital inicial y el interés simple acumulado durante el período de tiempo especificado.</span>
-
-
+                    <div>
+                        <div>
+                            <b>I (Intereses obtenidos):</b> Representa la cantidad de intereses ganados durante el período de inversión.
+                        </div>
+                        <div>
+                            <b>P (Principal o cantidad invertida inicialmente):</b> Es la cantidad de dinero inicial o principal que se invierte o presta.
+                        </div>
+                        <div>
+                            <b>F (Valor futuro o cantidad total al final del período):</b> Representa la cantidad total de dinero al final del período de inversión, incluyendo tanto el capital inicial como los intereses ganados.
+                        </div>
+                        <div>
+                            <b>n (Número de períodos de capitalización):</b> Indica la cantidad de períodos durante los cuales se capitaliza la inversión, por ejemplo, el número de años si la tasa de interés es anual.
+                        </div>
+                        <div>
+                            <b>r (Tasa de interés nominal):</b> Representa la tasa de interés por período, generalmente expresada como un porcentaje.
+                        </div>
+                        <div>
+                            <b>Ganancia total:</b> Es la cantidad total de dinero que se obtiene como resultado de la inversión, incluyendo tanto las ganancias como los intereses generados.
+                        </div>
+                        <div>
+                            <b>Inversión inicial:</b> Es la cantidad de dinero que se invierte inicialmente.
+                        </div>
+                        <div>
+                            <b>Interés Simple:</b> Es el interés calculado sobre el capital original únicamente, sin tener en cuenta los intereses acumulados en períodos anteriores.
+                        </div>
+                        <div>
+                            <b>Monto Total:</b> Es la suma del capital inicial y el interés simple acumulado durante el período de tiempo especificado.
+                        </div>
+                    </div>
                 </div>
-                <div className="flex flex-col items-center my-4">
-                    <span className="tracking-wider mb-2 font-medium">Formulas:</span>
-                    <div className="flex justify-center">
-                        <table>
-                            <tbody >
-                                <tr >
-                                    <td className="border border-zinc-700 p-3" ><b>Interes Simple:</b></td>
-                                    <td className="border border-zinc-700 p-3"><span>I = (C) (i) (t)</span></td>
-                                </tr>
-                                <tr>
-                                    <td className="border border-zinc-700 p-3"><b>Monto: </b></td>
-                                    <td className="border border-zinc-700 p-3"><span>M = C ( 1 + (i) (t) )</span></td>
-                                </tr>
-                                <tr >
-                                    <td className="border border-zinc-700 p-3"><b>Capital: </b></td>
-                                    <td className="border border-zinc-700 p-3"><span>C = I / (i) (t)</span></td>
-                                </tr>
-                                <tr >
-                                    <td className="border border-zinc-700 p-3"><b>Tasa de Interes: </b></td>
-                                    <td className="border border-zinc-700 p-3"><span>i = I / (C) (t)</span></td>
-                                </tr>
-                                <tr >
-                                    <td className="border border-zinc-700 p-3"><b>Tiempo: </b></td>
-                                    <td className="border border-zinc-700 p-3"><span>t = I / (C) (i)</span></td>
-                                </tr>
-                            </tbody>
-                        </table>
+                <div className="py-4 flex flex-col gap-3">
+                <span className="tracking-wider mb-2 font-medium">Formulas:</span>
+                    <div>
+                        <b>Interés Simple (IS):</b> IS = P × r × n
+                    </div>
+                    <div>
+                        <b>Valor Futuro (FV) en Interés Simple:</b> FV = P + IS
+                    </div>
+                    <div>
+                        <b>Tasa de Interés Efectiva Anual (TIEA):</b> TIEA = (1 + r/n)^n - 1
+                    </div>
+                    <div>
+                        <b>Tasa de Retorno Total (TRT):</b> TRT = (Ganancia total / Inversión inicial) × 100%
                     </div>
                 </div>
 
