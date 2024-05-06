@@ -4,6 +4,7 @@ import Home from "../pages/Home";
 import InteresSimple from "../pages/InteresSimple";
 import  InteresCompuesto  from "../pages/InteresCompuesto";
 import Anualidad from "../pages/Anualidad";
+import Tazadeinteres from "../pages/Tazadeinteres";
 
 export const router = createBrowserRouter([
     {
@@ -25,6 +26,10 @@ export const router = createBrowserRouter([
             {
                 path:'/anualidad',
                 element: <Anualidad/>,
+            },
+            {
+                path:'/Tazadeinteres',
+                element: <Tazadeinteres/>,
             }
         ]
     }

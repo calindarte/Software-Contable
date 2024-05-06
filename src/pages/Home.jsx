@@ -24,6 +24,9 @@ const Home = () => {
           <Link to="/anualidad">
             <li className="py-6 px-20 border bg-blue-200 hover:bg-amber-400">Anualidad</li>
           </Link>
+          <Link to="/Tazadeinteres">
+            <li className="py-6 px-20 border bg-blue-200 hover:bg-amber-400">Taza de interés de retorno</li>
+          </Link>
         </ul>
       </div>
       
