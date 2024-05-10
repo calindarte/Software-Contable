@@ -11,6 +11,9 @@ const NavBar = () => {
     <NavLink path="/interes-simple" text="Interes Simple"/>
     <NavLink path="/interes-compuesto" text="Interes Compuesto"/>
     <NavLink path="/anualidad" text="Anualidad"/>
+    <NavLink path="/gradientes" text="Gradientes"/>
+    <NavLink path="/amortizacion-capitalizacion" text="Amortizacion y Capitalizacion"/>
+    <NavLink path="/tasa-interna-retorno" text="TIR"/>
 
 
 

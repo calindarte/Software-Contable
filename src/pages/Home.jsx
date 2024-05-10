@@ -9,6 +9,8 @@ const Home = () => {
         </h1>
         <span className="text-xl">¿Qué desea Calcular?</span>
       </div>
+      <div className="flex gap-20">
+
       <div>
         <ul className=" text-xl border-[rgb(39,24,79)] border text-center rounded-xl overflow-hidden shadow-md cursor-pointer">
           <Link to="/interes-simple">
@@ -25,6 +27,24 @@ const Home = () => {
             <li className="py-6 px-20 border bg-blue-200 hover:bg-amber-400">Anualidad</li>
           </Link>
         </ul>
+      </div>
+      <div>
+        <ul className=" text-xl border-[rgb(39,24,79)] border text-center rounded-xl overflow-hidden shadow-md cursor-pointer">
+          <Link to="/gradientes">
+            <li className="py-6 px-20 border bg-blue-200 hover:bg-amber-400 ">
+              Gradientes
+            </li>
+          </Link>
+          <Link to="/amortizacion-capitalizacion">
+            <li className="py-6 px-10 border bg-blue-200 hover:bg-amber-400">
+              Amortización y Capitalización
+            </li>
+          </Link>
+          <Link to="/tasa-interna-retorno">
+            <li className="py-6 px-20 border bg-blue-200 hover:bg-amber-400">TIR</li>
+          </Link>
+        </ul>
+      </div>
       </div>
       
     </div>
